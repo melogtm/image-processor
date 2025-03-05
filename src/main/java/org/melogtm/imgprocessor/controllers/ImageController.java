@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
-@RestController("/image")
+@RestController()
+@RequestMapping("/image")
 public class ImageController {
 
     @PostMapping(value = "/", consumes = "multipart/form-data")
@@ -22,7 +23,7 @@ public class ImageController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ImageResponseDTO> getImage(@PathVariable UUID id) {
+    public ResponseEntity<ImageResponseDTO> getImage(@PathVariable String id) {
         return ResponseEntity.ok(new ImageResponseDTO("http://localhost:8080/image/3", "metadata"));
     }
 
